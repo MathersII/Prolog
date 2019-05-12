@@ -1,0 +1,6 @@
+:-op(750,fy,neg).
+:-op(850,xfy,or).
+
+subFormulas(F,[F]):-atom(F).
+subFormulas(F or Q,R):-subFormulas(F,R1),subFormulas(Q,R2),union(R1,R2,R3),union([F or Q],R3,R).
+subFormulas(neg F,R):-subFormulas(F,R1),union([neg F],R1,R).
